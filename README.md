@@ -72,8 +72,13 @@ if products:  # Check if products list is not empty
 else:
     print('No products found.')
 
+
 ```
 
 ### Output:
+![image](https://github.com/user-attachments/assets/edac062d-f690-427b-b816-c994bd4824c6)
+![image](https://github.com/user-attachments/assets/5e365176-1444-48e6-8895-27dc85ec024e)
+
 
 ### Result:
+Thus, To perform Web Scraping on Amazon using (beautifulsoup) Python has been executed successfully.
