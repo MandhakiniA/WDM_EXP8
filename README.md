@@ -49,7 +49,35 @@ def get_amazon_products(search_query):
     products_data = []  # List to store product information
 
     if response.status_code == 200:
-        /* TYPE YOUR CODE HERE
+soup = BeautifulSoup(response.content, 'html.parser')
+products = soup.find_all('div', {'class': 'product-tuple-listing'})
+for product in products:
+title = product.find('p', {'class': 'product-title'})
+price = product.find('span', {'class': 'product-price'})
+if price:
+product_price = convert_price_to_float(price.get('data-price', '0'))
+else:
+product_price = 0.0 # Default to 0 if no price found
+rating = product.find('div', {'class': 'filled-stars'}) # Assuming rating is shown with this
+class
+if title and price:
+product_name = title.text.strip()
+#product_price = re.sub(r'[^\d.]', '', price.text.strip()) # Remove non-numeric chars for
+price
+product_rating = rating['style'].split(';')[0].split(':')[-1] if rating else "No rating"
+products_data.append({
+'Product': product_name,
+'Price': float(product_price),
+'Rating': product_rating
+})
+print(f'Product: {product_name}')
+print(f'Price: {product_price}')
+print(f'Rating: {product_rating}')
+print('---')
+else:
+print('Failed to retrieve content')
+return products_data
+   
 
     return sorted(products_data, key=lambda x: convert_price_to_float(x['Price']))
 
